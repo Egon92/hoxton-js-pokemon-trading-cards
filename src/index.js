@@ -10,7 +10,8 @@
    - Render all the cards on the page that represents 
         all the pokemons, recreating the same layout, using JS */
 
-
+     function createPokemonCard(){
+     
      const liEl = document.body.createElement(`li`)
      liEl.setAttribute(`class`,`card`)
 
@@ -46,8 +47,13 @@
      insideListElement5.textContent = `SPECIAL-DEFENSE: 65`
      insideListElement5.textContent = `SPEED: 45`
 
+     }
+    createPokemonCard()
+    createPokemonCard()
+    createPokemonCard()
+    createPokemonCard()
+    createPokemonCard()
 
-    
 
 
 
