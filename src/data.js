@@ -1,4 +1,4 @@
-const data = [
+const pokemons = [
     {
       name: "bulbasaur",
       sprites: {

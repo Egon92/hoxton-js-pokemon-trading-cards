@@ -10,49 +10,44 @@
    - Render all the cards on the page that represents 
         all the pokemons, recreating the same layout, using JS */
 
-     function createPokemonCard(){
-     
-     const liEl = document.body.createElement(`li`)
+   
+function createPokemon (pokemon){
+          
+          
+    const container = document.querySelector(`.cards`)
+
+    const liEl = document.createElement(`li`)
      liEl.setAttribute(`class`,`card`)
 
-     const h2El = document.createElement(`h2`)
+    container.append(liEl)
+
+    const h2El = document.createElement(`h2`)
      h2El.setAttribute(`class`,`card--title`)
+     h2El.textContent= pokemon.name.toUpperCase()
 
-     const imgEl = document.createElement(`img`)
+    const imgEl = document.createElement(`img`)
      imgEl.setAttribute(`class`,`card--img`)
+     imgEl.setAttribute(`src`,`${pokemon.sprites.other['official-artwork'].front_default}`)
+     imgEl.setAttribute(`style`,`width:256px`)
 
-     const ulEl = document.createElement(`ul`)
-     ulEl.setAttribute(`class`,`card--text`)
+    const ulAttributeEl = document.createElement(`ul`)
+     ulAttributeEl.setAttribute(`class`,`card--text`)
 
-     liEl.append(h2El, imgEl, ulEl)
-     
-     const container = document.querySelector(`.cards`)
-     container.append(liEl)
-     
-     const insideListElement1 = document.createElement(`li`)
-     const insideListElement2 = document.createElement(`li`)
-     const insideListElement3 = document.createElement(`li`)
-     const insideListElement4 = document.createElement(`li`)
-     const insideListElement5 = document.createElement(`li`)
-     const insideListElement6 = document.createElement(`li`)
-        
-     ulEl.append(insideListElement1, insideListElement2, insideListElement3, insideListElement4, insideListElement5, insideListElement6)
-        
-     h2El.textContent = `Bulbasaur`
-     imgEl.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png`
-     insideListElement1.textContent = `HP: 45`
-     insideListElement2.textContent = `ATTACK: 49`
-     insideListElement3.textContent = `DEFENSE: 49`
-     insideListElement4.textContent = `SPECIAL-ATTACK: 65`
-     insideListElement5.textContent = `SPECIAL-DEFENSE: 65`
-     insideListElement5.textContent = `SPEED: 45`
+     liEl.append(h2El, imgEl, ulAttributeEl)
 
+     for(statData of pokemon.stats){
+          const attributeText = `${statData.stat.name.toUpperCase()}: ${statData.base_stat}`
+          const liAttributeEl = document.createElement(`li`)
+          liAttributeEl.textContent = attributeText
+          ulAttributeEl.append(liAttributeEl)
      }
-    createPokemonCard()
-    createPokemonCard()
-    createPokemonCard()
-    createPokemonCard()
-    createPokemonCard()
+}
+
+for (const pokemon of pokemons){
+     createPokemon(pokemon)
+}
+
+
 
 
 
