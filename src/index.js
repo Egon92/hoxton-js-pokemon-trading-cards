@@ -32,13 +32,13 @@
      </ul> */
 
 
-const bodyEl = document.querySelector(`body`)
+     const bodyEl = document.querySelector(`body`)
+     const cardsListEl = document.createElement(`ul`)
+     cardsListEl.setAttribute(`class`,`cards`)
+     bodyEl.append(cardsListEl)
 
 function createPokemon(pokemon){
 
-  const cardsListEl = document.createElement(`ul`)
-  cardsListEl.setAttribute(`class`,`cards`)
-  
   const cardEl = document.createElement(`li`)
   cardEl.setAttribute(`class`,`card`)
   
@@ -60,22 +60,12 @@ function createPokemon(pokemon){
           stateEl.textContent = `${state.stat.name.toUpperCase()}:${state.base_stat}`
           statsEl.append(stateEl)
      }
-     
-
      for(const state of pokemon.stats){
           createState(state)
      }
   
   cardEl.append(titleEl, imgEl, statsEl)
-  
   cardsListEl.append(cardEl)
-  
-  bodyEl.append(cardsListEl)
-
-
-
-
-     
 }
 
 for(const pokemon of pokemons){
