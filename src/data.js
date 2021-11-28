@@ -24,7 +24,7 @@ const pokemons = [
             front_default:
               "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
           }
-        },
+        },  
         versions: {
           "generation-i": {
             "red-blue": {
@@ -8501,9 +8501,12 @@ const pokemons = [
     }
   ];
   
-  window.data = data;
+  window.data = pokemons;
 
 
+
+
+  
 
 
 

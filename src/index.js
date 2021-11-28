@@ -10,42 +10,74 @@
    - Render all the cards on the page that represents 
         all the pokemons, recreating the same layout, using JS */
 
-   
-function createPokemon (pokemon){
-          
-          
-    const container = document.querySelector(`.cards`)
+        console.log(data);
 
-    const liEl = document.createElement(`li`)
-     liEl.setAttribute(`class`,`card`)
+  /* <ul class="cards">
+       <li class="card"> 
+          <h2 class="card--title">Bulbasaur</h2>
+          <img
+                width="256"
+                class="card--img"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+          />
+          <ul class="card--text">
+               <li>HP: 45</li>
+               <li>ATTACK: 49</li>
+               <li>DEFENSE: 49</li>
+               <li>SPECIAL-ATTACK: 65</li>
+               <li>SPECIAL-DEFENSE: 65</li>
+               <li>SPEED: 45</li>
+          </ul>
+       </li> 
+     </ul> */
 
-    container.append(liEl)
 
-    const h2El = document.createElement(`h2`)
-     h2El.setAttribute(`class`,`card--title`)
-     h2El.textContent= pokemon.name.toUpperCase()
+const bodyEl = document.querySelector(`body`)
 
-    const imgEl = document.createElement(`img`)
-     imgEl.setAttribute(`class`,`card--img`)
-     imgEl.setAttribute(`src`,`${pokemon.sprites.other['official-artwork'].front_default}`)
-     imgEl.setAttribute(`style`,`width:256px`)
+function createPokemon(pokemon){
 
-    const ulAttributeEl = document.createElement(`ul`)
-     ulAttributeEl.setAttribute(`class`,`card--text`)
-
-     liEl.append(h2El, imgEl, ulAttributeEl)
-
-     for(statData of pokemon.stats){
-          const attributeText = `${statData.stat.name.toUpperCase()}: ${statData.base_stat}`
-          const liAttributeEl = document.createElement(`li`)
-          liAttributeEl.textContent = attributeText
-          ulAttributeEl.append(liAttributeEl)
-     }
+  const cardsListEl = document.createElement(`ul`)
+  cardsListEl.setAttribute(`class`,`cards`)
+  
+  const cardEl = document.createElement(`li`)
+  cardEl.setAttribute(`class`,`card`)
+  
+  const titleEl = document.createElement(`h2`)
+  titleEl.setAttribute(`class`,`card--title`)
+  titleEl.textContent = pokemon.name
+  
+  const imgEl = document.createElement(`img`)
+  imgEl.setAttribute(`class`,`card--img`)
+  imgEl.setAttribute(`width`,`256`)
+  imgEl.setAttribute(`src`, `${pokemon.sprites.other[`official-artwork`].front_default}`)
+  
+  const statsEl = document.createElement(`ul`)
+  statsEl.setAttribute(`class`,`card--text`)
+  
+  const statEl = document.createElement(`li`)
+  statEl.setAttribute(`class`,`stat`)
+  statEl.textContent = `HP: 45`
+  
+  
+  statsEl.append(statEl)
+  
+  cardEl.append(titleEl, imgEl, statsEl)
+  
+  cardsListEl.append(cardEl)
+  
+  bodyEl.append(cardsListEl)
+     
 }
 
-for (const pokemon of pokemons){
+
+
+
+for(const pokemon of pokemons){
      createPokemon(pokemon)
 }
+
+
+
 
 
 

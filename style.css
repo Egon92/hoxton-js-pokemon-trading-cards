@@ -9,7 +9,7 @@
   
   body {
     display: grid;
-    grid-template-columns: minmax(300px, 1200px);
+    grid-template-columns: 1fr;
     justify-content: center;
   
     height: 100vh;
