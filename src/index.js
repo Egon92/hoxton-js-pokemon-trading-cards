@@ -54,28 +54,33 @@ function createPokemon(pokemon){
   const statsEl = document.createElement(`ul`)
   statsEl.setAttribute(`class`,`card--text`)
   
-  const statEl = document.createElement(`li`)
-  statEl.setAttribute(`class`,`stat`)
-  statEl.textContent = `HP: 45`
-  
-  
-  statsEl.append(statEl)
+     function createState(state){
+          const stateEl = document.createElement(`li`)
+          stateEl.setAttribute(`class`,`stat`)
+          stateEl.textContent = `${state.stat.name.toUpperCase()}:${state.base_stat}`
+          statsEl.append(stateEl)
+     }
+     
+
+     for(const state of pokemon.stats){
+          createState(state)
+     }
   
   cardEl.append(titleEl, imgEl, statsEl)
   
   cardsListEl.append(cardEl)
   
   bodyEl.append(cardsListEl)
+
+
+
+
      
 }
-
-
-
 
 for(const pokemon of pokemons){
      createPokemon(pokemon)
 }
-
 
 
 
