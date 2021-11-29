@@ -72,11 +72,34 @@ for(const pokemon of pokemons){
      createPokemon(pokemon)
 }
 
+const formEl = document.querySelector(".add-pokemon")
 
 
+formEl.addEventListener("submit", function (event){
+     event.preventDefault()
 
+     const name = formEl.name.value
+     const image = formEl.image.value
+     
+     console.log("name:", name)
+     console.log("image:", image)
 
+     const pokemon = {
+          name: name,
+          sprites: {
+               other: {
+               "official-artwork": {
+               front_default: image
+                         }
+                    }         
+               },
+          stats: []
+     }
 
+     console.log(pokemon)
+
+     createPokemon(pokemon)
+})
 
 
 
